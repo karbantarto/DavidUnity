@@ -4,6 +4,6 @@ class MyFirstScript : MonoBehaviour
 {
     void Start()
     {
-        Debug.Log("Hello Unity");
+        Debug.Log("Hello zerg");
     }
 }
