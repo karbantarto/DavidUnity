@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FizzBuzz : MonoBehaviour
+class FizzBuzz : MonoBehaviour
 {
+    [SerializeField, Min(1)] int number = 1;
+
+
     // Start is called before the first frame update
     void Start()
     {
         
-        for (int i = 1; i < 100; i++) 
+        for (int i = 1; i <= number; i++) 
         {
             if (i % 3 == 0 && i % 5 == 0)
             {
