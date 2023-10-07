@@ -5,6 +5,7 @@ class PlayerMover : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float angularSpeed = 360;
+    [SerializeField] Transform cameraTransform;
 
 
 
@@ -16,10 +17,14 @@ class PlayerMover : MonoBehaviour
         //Transform t = transform;
         if (direction != Vector3.zero)
         {
-            Vector3 velocity = direction * speed;
+            Vector3 cameraDir = cameraTransform.TransformDirection(direction);
+            cameraDir.y = 0;
+            cameraDir.Normalize();
+
+            Vector3 velocity = cameraDir * speed;
             transform.position += velocity * Time.deltaTime;
 
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            Quaternion targetRotation = Quaternion.LookRotation(cameraDir);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * Time.deltaTime);
         }
 
